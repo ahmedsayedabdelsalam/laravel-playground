@@ -8,5 +8,6 @@ $factory->define(App\Course::class, function (Faker $faker) {
         'is_free' => rand(0, 1),
         'diffeculty' => ['easy', 'medium', 'diffecult'][rand(0, 2)],
         'type' => ['tech', 'science', 'math'][rand(0, 2)],
+        'views' => rand(0, 500),
     ];
 });
