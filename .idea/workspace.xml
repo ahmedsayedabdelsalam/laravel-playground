@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55e59656-d6d7-483e-b465-61952aeea7c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/ViewComposer/CourseFiltersComposer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/courses/partials/_filters_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Course.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filters/Course/CourseFilters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filters/Course/CourseFilters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Filters/Course/DiffecultyFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filters/Course/DifficultyFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_03_224627_create_courses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_03_224627_create_courses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/courses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/courses/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/courses/partials/_course.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/courses/partials/_course.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="55e59656-d6d7-483e-b465-61952aeea7c3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,16 +399,15 @@
       <workItem from="1549480611351" duration="197000" />
       <workItem from="1549525389065" duration="154000" />
       <workItem from="1549525725948" duration="161000" />
-      <workItem from="1550930497871" duration="8675000" />
+      <workItem from="1550930497871" duration="9405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16782000" />
+    <option name="totallyTimeSpent" value="17512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1359" y="20" width="1368" height="749" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49840257" visible="true" weight="0.19469696" />
       <window_info id="Structure" order="1" sideWeight="0.50159746" side_tool="true" weight="0.18731117" />
