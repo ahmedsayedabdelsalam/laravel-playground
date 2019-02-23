@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
-use App\Filters\Course\DiffecultyFilter;
+use App\Filters\Course\DifficultyFilter;
 
 class CourseController extends Controller
 {
     public function index(Request $request)
     {
-        $courses = Course::with('subjects')->filter($request, $this->addFilters())->get();
-        // return $courses;
-        return view('courses.index', compact('courses'));
+        $courses = Course::with('subjects')->filter($request, $this->addFilters())->paginate(2);
+
+        return view('courses.index', compact('courses', 'subjects'));
     }
 
     protected function addFilters()
     {
         return [
-            'diffeculty' => DiffecultyFilter::class
+            'difficulty' => DifficultyFilter::class
         ];
     }
 }

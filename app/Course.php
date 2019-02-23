@@ -41,9 +41,9 @@ class Course extends Model
         return $this->users->contains(auth()->user());
     }
 
-    public function getFormattedDiffecultyAttribute()
+    public function getFormattedDifficultyAttribute()
     {
-        return ucfirst($this->diffeculty);
+        return ucfirst($this->difficulty);
     }
     
     public function getFormattedTypeAttribute()

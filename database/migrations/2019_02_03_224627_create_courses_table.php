@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('name', 50);
             $table->boolean('is_free')->default(false);
-            $table->enum('diffeculty', ['easy', 'medium', 'diffecult'])->default('easy');
+            $table->enum('difficulty', ['easy', 'medium', 'difficult'])->default('easy');
             $table->enum('type', ['tech', 'science', 'math'])->default('tech');
             $table->timestamps();
         });
