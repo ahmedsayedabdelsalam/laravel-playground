@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/telescope": "^1.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "swooletw/laravel-swoole": "v2.6.5.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
