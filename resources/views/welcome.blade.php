@@ -95,5 +95,17 @@
                 </div>
             </div>
         </div>
+        <script>
+            var botmanWidget = {
+                frameEndpoint: '/chat-frame',
+                chatServer: 'test',
+                title: 'Messenger',
+                introMessage: 'اهلا يا سيدي',
+                mainColor: '#ccc',
+                bubbleBackground: '#F00',
+                aboutText: ''
+            };
+        </script>
+        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     </body>
 </html>
