@@ -12,6 +12,13 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use App\Nova\Filters\PostPublished;
+use App\Nova\Filters\PostCategories;
+use App\Nova\Lenses\MostTags;
+use App\Nova\Actions\PublishPost;
+use App\Nova\Metrics\PostsPerDay;
+use App\Nova\Metrics\PostCount;
+use App\Nova\Metrics\PostsPerCategory;
 
 class Post extends Resource
 {
@@ -63,9 +70,11 @@ class Post extends Resource
                 ->rules('after_or_equal:publish_at'),
 
             Boolean::make('Is Published')
-                ->canSee(function($request) {
-                    return false;
-                }),
+                // ->canSee(function($request) {
+                //     return false;
+                // })
+                // ->onlyOnIndex(),
+                ,
 
             Select::make('Category')
                 ->options([
@@ -90,7 +99,11 @@ class Post extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new PostCount)->width('1/2'),
+            (new PostsPerCategory)->width('1/2'),
+            (new PostsPerDay)->width('full')
+        ];
     }
 
     /**
@@ -101,7 +114,10 @@ class Post extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new PostPublished,
+            new PostCategories
+        ];
     }
 
     /**
@@ -112,7 +128,9 @@ class Post extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new MostTags
+        ];
     }
 
     /**
@@ -123,7 +141,14 @@ class Post extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new PublishPost)->canSee(function ($request) {
+                // return $request->user()->id === 2;
+                return true;
+            })->canRun(function ($request, $post) { // issue not working with queued action
+                return $post->id === 2;
+            })
+        ];
     }
 
     /**

@@ -14,7 +14,9 @@
         "laravel/framework": "5.8.*",
         "laravel/nova": "*",
         "laravel/scout": "^7.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "predis/predis": "^1.1",
+        "ahmed/viewcache": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -52,6 +54,10 @@
         {
             "type": "path",
             "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Viewcache"
         }
     ],
     "minimum-stability": "dev",

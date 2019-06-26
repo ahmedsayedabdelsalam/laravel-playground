@@ -6,6 +6,10 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use App\Nova\Metrics\PostCount;
+use App\Nova\Metrics\PostsPerDay;
+use App\Nova\Metrics\PostsPerCategory;
+use Ahmed\Viewcache\Viewcache;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -56,7 +60,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            // new Help,
+            new PostCount,
+            new PostsPerDay,
+            new PostsPerCategory
         ];
     }
 
@@ -67,7 +74,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new Viewcache
+        ];
     }
 
     /**
