@@ -16,7 +16,10 @@
         "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "ahmed/viewcache": "*"
+        "ahmed/viewcache": "*",
+        "ahmed/nova-clock": "*",
+        "ahmed/string-limit": "*",
+        "ahmed/nova-theme": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -58,6 +61,18 @@
         {
             "type": "path",
             "url": "./nova-components/Viewcache"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NovaClock"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/StringLimit"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NovaTheme"
         }
     ],
     "minimum-stability": "dev",

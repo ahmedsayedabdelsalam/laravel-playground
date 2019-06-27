@@ -10,6 +10,7 @@ use App\Nova\Metrics\PostCount;
 use App\Nova\Metrics\PostsPerDay;
 use App\Nova\Metrics\PostsPerCategory;
 use Ahmed\Viewcache\Viewcache;
+use Ahmed\NovaClock\NovaClock;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -63,7 +64,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             // new Help,
             new PostCount,
             new PostsPerDay,
-            new PostsPerCategory
+            new PostsPerCategory,
+            (new NovaClock)->displaySeconds()
         ];
     }
 

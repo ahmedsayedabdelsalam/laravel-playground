@@ -19,6 +19,7 @@ use App\Nova\Actions\PublishPost;
 use App\Nova\Metrics\PostsPerDay;
 use App\Nova\Metrics\PostCount;
 use App\Nova\Metrics\PostsPerCategory;
+use Ahmed\StringLimit\StringLimit;
 
 class Post extends Resource
 {
@@ -56,8 +57,9 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title')
-                ->rules(['required']),
+            StringLimit::make('Title')
+                ->rules(['required'])
+                ->max(255),
 
             Trix::make('Body'),
 

@@ -9,7 +9,11 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "build-viewcache": "cd nova-components/Viewcache && npm run dev",
-        "build-viewcache-prod": "cd nova-components/Viewcache && npm run prod"
+        "build-viewcache-prod": "cd nova-components/Viewcache && npm run prod",
+        "build-nova-clock": "cd nova-components/NovaClock && npm run dev",
+        "build-nova-clock-prod": "cd nova-components/NovaClock && npm run prod",
+        "build-string-limit": "cd nova-components/StringLimit && npm run dev",
+        "build-string-limit-prod": "cd nova-components/StringLimit && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.18",
