@@ -12,3 +12,4 @@ yarn-error.log
 .idea
 nova
 nova-components
+_ide_helper.php

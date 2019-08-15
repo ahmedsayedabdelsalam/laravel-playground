@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
+use App\Project;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(User::class, 10)
+            ->create()
+            ->each(function($user) {
+                $user->projects()->saveMany(factory(Project::class, rand(1, 3))->make());
+            });
+
+//        factory(Project::class, 10)->create();
     }
 }
