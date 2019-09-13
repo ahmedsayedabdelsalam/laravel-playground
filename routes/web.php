@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return App\User::where('email', 'not like', '%nermeen%')->count();
 });
