@@ -17,6 +17,13 @@
         <li>{{$user->name}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
         @endforeach
     </ul>
+
+    {{$feature->id}}
+    <ul>
+        @foreach($feature->comments as $comment)
+        <li style="{{$comment->isAuthor() ? 'font-weight: bold' : ''}}">{{$comment->body}}</li>
+        @endforeach
+    </ul>
 </body>
 
 </html>

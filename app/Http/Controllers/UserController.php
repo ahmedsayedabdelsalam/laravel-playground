@@ -24,6 +24,9 @@ class UserController extends Controller
             ->selectRaw('COUNT(CASE WHEN TYPE = "rejected" THEN 1 END) AS rejected')
             ->first();
 
-        return view('users.index', compact('users', 'features_count'));
+        $feature = Feature::has('comments')->with('comments')->first();
+        $feature->comments->each(fn ($comment) => $comment->setRelation('feature', $feature));
+
+        return view('users.index', compact('users', 'features_count', 'feature'));
     }
 }
