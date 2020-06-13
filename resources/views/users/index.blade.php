@@ -12,9 +12,15 @@
     accepted: {{$features_count->accepted}}
     rejected: {{$features_count->rejected}}
 
+    <br>
+    <br>
+    <form action="/" method="GET">
+        <input value="{{request('search')}}" type="text" name="search">
+    </form>
+
     <ul>
         @foreach($users as $user)
-        <li>{{$user->name}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
+        <li>{{$user->name}} - {{$user->email}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
         @endforeach
     </ul>
 

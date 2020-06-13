@@ -12,7 +12,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()
-            ->select('id', 'name', 'company_id')
+            ->search(request('search'))
+            ->select('id', 'name', 'email', 'company_id')
             ->withLastLogin()
             ->with('company:id,name')
             // ->orderBy('name')

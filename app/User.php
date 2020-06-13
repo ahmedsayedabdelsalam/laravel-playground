@@ -51,4 +51,21 @@ class User extends Authenticatable
         ])
             ->with('lastLogin');
     }
+
+    public function scopeSearch(Builder $query, $terms = null)
+    {
+        collect(explode(' ', $terms))
+            ->filter()
+            ->map(fn ($term) => "%$term%")
+            ->each(
+                fn ($term) => $query->where(
+                    fn ($query) => $query->where('name', 'like', $term)
+                        ->orWhere('email', 'like', $term)
+                        ->orWhereHas(
+                            'company',
+                            fn ($query) => $query->where('name', 'like', $term)
+                        )
+                )
+            );
+    }
 }
