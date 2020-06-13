@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    pending: {{$features_count->pending}}
+    accepted: {{$features_count->accepted}}
+    rejected: {{$features_count->rejected}}
+
     <ul>
         @foreach($users as $user)
         <li>{{$user->name}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
