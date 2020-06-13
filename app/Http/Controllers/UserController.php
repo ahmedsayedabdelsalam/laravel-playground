@@ -10,7 +10,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()
-            ->with('company')
+            ->select('id', 'name', 'company_id')
+            ->with('company:id,name')
             ->orderBy('name')
             ->paginate(100);
 
