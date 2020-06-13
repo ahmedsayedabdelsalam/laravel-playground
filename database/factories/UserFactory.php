@@ -1,5 +1,6 @@
 <?php
 
+use App\Company;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -21,5 +22,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => Str::random(10),
+        'company_id' => function () {
+            return Company::inRandomOrder()->first() ?? factory(Company::class)->create();
+        }
     ];
 });
