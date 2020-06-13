@@ -10,7 +10,7 @@
 <body>
     <ul>
         @foreach($users as $user)
-        <li>{{$user->name}} - {{$user->company->name}} - {{optional($user->last_login_at)->diffForHumans()}}</li>
+        <li>{{$user->name}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
         @endforeach
     </ul>
 </body>
