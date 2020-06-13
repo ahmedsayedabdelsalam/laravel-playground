@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Login;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,9 @@ class UserController extends Controller
     {
         $users = User::query()
             ->select('id', 'name', 'company_id')
+            ->withLastLogin()
             ->with('company:id,name')
-            ->orderBy('name')
+            // ->orderBy('name')
             ->paginate(100);
 
         return view('users.index', compact('users'));

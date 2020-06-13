@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -31,5 +32,20 @@ class User extends Authenticatable
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function logins()
+    {
+        return $this->hasMany(Login::class);
+    }
+
+    public function scopeWithLastLogin(Builder $query)
+    {
+        return $query->addSelect([
+            'last_login_at' => Login::select('created_at')->whereColumn('user_id', 'users.id')->latest()->take(1)
+        ])
+            ->withCasts([
+                'last_login_at' => 'datetime'
+            ]);
     }
 }
