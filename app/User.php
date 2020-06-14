@@ -54,17 +54,21 @@ class User extends Authenticatable
 
     public function scopeSearch(Builder $query, $terms = null)
     {
-        collect(explode(' ', $terms))
+        // $query->join('companies', 'companies.id', 'users.company_id');
+
+        collect(str_getcsv($terms, ' ', '"'))
             ->filter()
-            ->map(fn ($term) => "%$term%")
+            ->map(fn ($term) => "$term%")
             ->each(
                 fn ($term) => $query->where(
-                    fn ($query) => $query->where('name', 'like', $term)
+                    fn ($query) => $query->where('users.name', 'like', $term)
                         ->orWhere('email', 'like', $term)
-                        ->orWhereHas(
-                            'company',
-                            fn ($query) => $query->where('name', 'like', $term)
-                        )
+                        ->whereIn('company_id', fn ($query) => $query->select('id')->from('companies')->where('name', 'like', $term))
+                    // ->orWhere('companies.name', 'like', $term)
+                    // ->orWhereHas(
+                    //     'company',
+                    //     fn ($query) => $query->where('name', 'like', $term)
+                    // )
                 )
             );
     }

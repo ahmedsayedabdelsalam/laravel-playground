@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $users = User::query()
             ->search(request('search'))
-            ->select('id', 'name', 'email', 'company_id')
+            ->select('users.id', 'users.name', 'email', 'company_id')
             ->withLastLogin()
             ->with('company:id,name')
             // ->orderBy('name')
