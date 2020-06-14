@@ -59,14 +59,20 @@ class User extends Authenticatable
             ->map(fn ($term) => "$term%")
             ->each(
                 fn ($term) => $query->where(
-                    fn ($query) => $query->where('name', 'like', $term)
-                        ->orWhere('email', 'like', $term)
-                        ->orWhereIn('company_id', Company::where('name', 'like', $term)->pluck('id'))
-                    // ->orWhere('companies.name', 'like', $term)
-                    // ->orWhereHas(
-                    //     'company',
-                    //     fn ($query) => $query->where('name', 'like', $term)
-                    // )
+                    fn ($query) => $query
+                        ->WhereIn('id', fn ($query) => $query->select('id')->from( // driven table
+                            fn ($query) => $query->select('id')
+                                ->from('users')
+                                ->where('name', 'like', $term)
+                                ->orWhere('email', 'like', $term)
+                                ->union(
+                                    $query->newQuery()
+                                        ->select('users.id')
+                                        ->from('users')
+                                        ->join('companies', 'companies.id', '=', 'users.company_id')
+                                        ->where('companies.name', 'like', $term)
+                                )
+                        ))
                 )
             );
     }
