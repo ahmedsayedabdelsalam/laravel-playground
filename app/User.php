@@ -56,21 +56,24 @@ class User extends Authenticatable
     {
         collect(str_getcsv($terms, ' ', '"'))
             ->filter()
-            ->map(fn ($term) => "$term%")
+            ->map(fn($term) => preg_replace('/[^A-Za-z0-9]/', '', $term) . "%")
             ->each(
-                fn ($term) => $query->where(
-                    fn ($query) => $query
-                        ->WhereIn('id', fn ($query) => $query->select('id')->from( // driven table
-                            fn ($query) => $query->select('id')
+                fn($term) => $query->where(
+                    fn($query) => $query
+                        ->WhereIn('id', fn($query) => $query->select('id')->from( // driven table
+                            fn($query) => $query->select('id')
                                 ->from('users')
-                                ->where('name', 'like', $term)
-                                ->orWhere('email', 'like', $term)
+//                                ->where('name', 'like', $term)
+//                                ->orWhere('email', 'like', $term)
+                                ->whereRaw("regexp_replace(name, '[^A-Za-z0-9]', '') like ?", [$term])
+                                ->orWhereRaw("regexp_replace(email, '[^A-Za-z0-9]', '') like ?", [$term])
                                 ->union(
                                     $query->newQuery()
                                         ->select('users.id')
                                         ->from('users')
                                         ->join('companies', 'companies.id', '=', 'users.company_id')
-                                        ->where('companies.name', 'like', $term)
+//                                        ->where('companies.name', 'like', $term)
+                                        ->whereRaw("regexp_replace(companies.name, '[^a-zA-Z0-9]', '') like ?", [$term])
                                 )
                         ))
                 )
