@@ -39,6 +39,11 @@ class User extends Authenticatable
         return $this->hasMany(Login::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function lastLogin()
     {
         return $this->belongsTo(Login::class, 'last_login_id');
@@ -50,6 +55,11 @@ class User extends Authenticatable
             'last_login_id' => Login::select('id')->whereColumn('user_id', 'users.id')->latest()->take(1)
         ])
             ->with('lastLogin');
+    }
+
+    public function scopeIsAdmin(Builder $query)
+    {
+        return $query->where('is_admin', true);
     }
 
     public function scopeSearch(Builder $query, $terms = null)

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Feature;
 use App\Login;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -28,6 +30,11 @@ class UserController extends Controller
         $feature = Feature::has('comments')->with('comments')->first();
         $feature->comments->each(fn ($comment) => $comment->setRelation('feature', $feature));
 
-        return view('users.index', compact('users', 'features_count', 'feature'));
+        $user = User::has('comments')->inRandomOrder()->first();
+//        $user = User::isAdmin()->first();
+        Auth::login($user);
+        $comments = Comment::visibleTo($user)->paginate();
+
+        return view('users.index', compact('users', 'features_count', 'feature', 'comments'));
     }
 }
