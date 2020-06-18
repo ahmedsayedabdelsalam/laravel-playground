@@ -18,7 +18,8 @@ class UserController extends Controller
             ->select('id', 'name', 'email', 'company_id')
             ->withLastLogin()
             ->with('company:id,name')
-            // ->orderBy('name')
+             ->orderBy('name')
+            ->orderBy('email')
             ->paginate(100);
 
         $features_count = Feature::toBase()
