@@ -41,7 +41,7 @@
 
     <ul>
         @foreach($comments as $comment)
-            <li>{{$comment->body}}</li>
+            <li>{{$comment->body}} --- {{$comment->user->name}}</li>
         @endforeach
         {{$comments->links()}}
     </ul>
