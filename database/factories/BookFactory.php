@@ -7,6 +7,13 @@ use Faker\Generator as Faker;
 
 $factory->define(Book::class, function (Faker $faker) {
     return [
-        'name' => $faker->name
+        'name' => $faker->name,
+        'author' => $faker->name
+    ];
+});
+
+$factory->state(Book::class, 'withoutAuthor', function (Faker $faker) {
+    return [
+        'author' => null
     ];
 });

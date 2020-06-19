@@ -13,5 +13,6 @@ class BookSeeder extends Seeder
     public function run()
     {
         factory(Book::class, 20)->create();
+        factory(Book::class, 10)->state('withoutAuthor')->create();
     }
 }

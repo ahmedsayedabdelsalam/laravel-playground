@@ -10,8 +10,9 @@
 <body>
     <ul>
         @foreach($books as $book)
-        <li>{{$book->name}} -- {{$book->lastCheckout->borrowed_at->diffForHumans()}} -- {{$book->lastCheckout->user->name}}</li>
+        <li>{{$book->name}} -- {{$book->author}} -- {{$book->lastCheckout->borrowed_at->diffForHumans()}} -- {{$book->lastCheckout->user->name}}</li>
         @endforeach
+        {{$books->links()}}
     </ul>
 </body>
 

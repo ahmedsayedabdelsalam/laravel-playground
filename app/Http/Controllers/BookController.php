@@ -32,17 +32,18 @@ class BookController extends Controller
             //         ->take(1);
             // })
 
-            ->orderBy(
-                User::select('name')
-                    ->join('checkout', 'checkout.user_id', '=', 'users.id')
-                    ->whereColumn('books.id', '=', 'checkout.book_id')
-                    ->latest('checkout.borrowed_at')
-                    ->take(1)
-            )
+            // ->orderBy(
+            //     User::select('name')
+            //         ->join('checkout', 'checkout.user_id', '=', 'users.id')
+            //         ->whereColumn('books.id', '=', 'checkout.book_id')
+            //         ->latest('checkout.borrowed_at')
+            //         ->take(1)
+            // )
 
             // with huge data this will not be the best approach adding a caching column (last_checkout_id) to books table
             // and keeping updating this column every time a book checked out will introduce better performance
 
+            ->orderByNullsLast('author')
             ->withLastCheckout()
             ->with('lastCheckout.user')
             ->paginate();
