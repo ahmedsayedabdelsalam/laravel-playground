@@ -66,12 +66,12 @@ class User extends Authenticatable
     {
         collect(str_getcsv($terms, ' ', '"'))
             ->filter()
-            ->map(fn($term) => preg_replace('/[^A-Za-z0-9]/', '', $term) . "%")
+            ->map(fn ($term) => preg_replace('/[^A-Za-z0-9]/', '', $term) . "%")
             ->each(
-                fn($term) => $query->where(
-                    fn($query) => $query
-                        ->WhereIn('id', fn($query) => $query->select('id')->from( // driven table
-                            fn($query) => $query->select('id')
+                fn ($term) => $query->where(
+                    fn ($query) => $query
+                        ->WhereIn('id', fn ($query) => $query->select('id')->from( // driven table
+                            fn ($query) => $query->select('id')
                                 ->from('users')
                                 ->where('name_normalized', 'like', $term)
                                 ->orWhere('email_normalized', 'like', $term)
@@ -85,5 +85,15 @@ class User extends Authenticatable
                         ))
                 )
             );
+    }
+
+    public function scopeOrderByLastLogin(Builder $query)
+    {
+        return $query->orderByDesc(
+            Login::select('created_at')
+                ->whereColumn('logins.user_id', '=', 'users.id')
+                ->latest()
+                ->take(1)
+        );
     }
 }

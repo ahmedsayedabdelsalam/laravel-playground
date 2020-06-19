@@ -23,7 +23,7 @@
 
     <ul>
         @foreach($users as $user)
-        <li>{{$user->name}} - {{$user->email}} - {{$user->company->name}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
+        <li>{{$user->name}} - {{$user->email}} - {{optional(optional($user->lastLogin)->created_at)->diffForHumans()}}</li>
         @endforeach
     </ul>
 
@@ -41,7 +41,7 @@
 
     <ul>
         @foreach($comments as $comment)
-            <li>{{$comment->body}} --- {{$comment->user->name}}</li>
+        <li>{{$comment->body}} --- {{$comment->user->name}}</li>
         @endforeach
         {{$comments->links()}}
     </ul>
