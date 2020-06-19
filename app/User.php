@@ -49,6 +49,13 @@ class User extends Authenticatable
         return $this->belongsTo(Login::class, 'last_login_id');
     }
 
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'checkout')
+            ->using(Checkout::class)
+            ->withPivot('borrowed_at');
+    }
+
     public function scopeWithLastLogin(Builder $query)
     {
         return $query->addSelect([
