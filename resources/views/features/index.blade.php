@@ -11,6 +11,7 @@
     <ul>
         @foreach($features as $feature)
             <li>{{$feature->name}} -- {{$feature->type}} -- {{$feature->comments_count}} comments -- {{$feature->likes_count}} likes -- ({{$feature->likes_count + ($feature->comments_count * 2)}})</li>
+            <li>{{$feature->comments->count()}}</li>
         @endforeach
         {{$features->withQueryString()->links()}}
     </ul>
