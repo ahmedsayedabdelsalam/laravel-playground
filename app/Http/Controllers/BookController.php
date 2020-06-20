@@ -48,6 +48,8 @@ class BookController extends Controller
             ->with('lastCheckout.user')
             ->paginate();
 
-        return view('books.index', compact('books'));
+        $books_natsort = Book::orderByRaw('naturalSort(name)')->paginate();
+
+        return view('books.index', compact('books', 'books_natsort'));
     }
 }

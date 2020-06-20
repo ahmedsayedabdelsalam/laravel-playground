@@ -8,12 +8,20 @@
 </head>
 
 <body>
-    <ul>
-        @foreach($books as $book)
-        <li>{{$book->name}} -- {{$book->author}} -- {{$book->lastCheckout->borrowed_at->diffForHumans()}} -- {{$book->lastCheckout->user->name}}</li>
-        @endforeach
-        {{$books->links()}}
-    </ul>
+<ul>
+    @foreach($books as $book)
+        <li>{{$book->name}} -- {{$book->author}} -- {{$book->lastCheckout->borrowed_at->diffForHumans()}}
+            -- {{$book->lastCheckout->user->name}}</li>
+    @endforeach
+    {{$books->links()}}
+    <br>
+    <br>
+
+    @foreach($books_natsort as $book)
+        <li>{{$book->name}}</li>
+    @endforeach
+    {{$books->links()}}
+</ul>
 </body>
 
 </html>
