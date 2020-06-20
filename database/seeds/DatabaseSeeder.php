@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FeatureSeeder::class);
         $this->call(BookSeeder::class);
         $this->call(CheckoutSeeder::class);
+        $this->call(LikeSeeder::class);
     }
 }
