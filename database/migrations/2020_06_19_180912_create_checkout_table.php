@@ -18,6 +18,8 @@ class CreateCheckoutTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
             $table->timestamp('borrowed_at');
+            $table->string('name');
+            $table->rawIndex('(date_format(borrowed_at, "%m-%d")), name', 'checkouts_borrowed_at_name_index');
             $table->timestamps();
         });
     }

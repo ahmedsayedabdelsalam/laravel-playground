@@ -16,3 +16,5 @@ Route::get('/', 'UserController@index');
 Route::get('/books', 'BookController@index');
 
 Route::get('/features', 'FeatureController@index');
+
+Route::get('/checkouts', 'CheckoutController@index');

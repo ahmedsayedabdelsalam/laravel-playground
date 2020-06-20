@@ -15,6 +15,7 @@ $factory->define(Checkout::class, function (Faker $faker) {
         'book_id' => function () {
             return Book::inRandomOrder()->first() ?? factory(Book::class)->create();
         },
-        'borrowed_at' => $faker->dateTimeThisYear()
+        'borrowed_at' => $faker->dateTimeThisYear(),
+        'name' => $faker->name
     ];
 });
